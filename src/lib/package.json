@@ -1,0 +1,14 @@
+{
+  "name": "seumodal",
+  "version": "1.0.9",
+  "description": "Seulement Une Modale, voilà.",
+  "main": "SuModal",
+  "peerDependencies": {
+    "prop-types": "^15.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Ogden",
+  "license": "MIT"
+}
