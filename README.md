@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# SuModal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_A simple and reusable react modal component._
 
-## Available Scripts
+## Install
 
-In the project directory, you can run:
+```
+npm install sumodal
+```
 
-### `npm start`
+or
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+yarn add sumodal
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
 
-### `npm test`
+### Example setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+import { useState } from "react";
+import { SuModal } from "./lib/SuModal";
+import "./App.css";
 
-### `npm run build`
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <div className="App">
+        {isOpen && (
+          <SuModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            styleOptions={{ content: { width: "25vw", height: "25vh" } }}
+          >
+            Sample text
+          </SuModal>
+        )}
+        <button onClick={() => setIsOpen(true)}>launch modal</button>
+      </div>
+      ;
+    </>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export default App;
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Closing options
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+By default, modal can be closed
 
-### `npm run eject`
+- by clicking outside its content
+- by clicking on the top right corner close button
+- by pressing esc key
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Each of those features can be disabled by setting closeButton, closeOnClickOut, closeOnEscKey props to false.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+<>
+  <SuModal
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
+    closeButton={false}
+    closeOnClickOut={false}
+    closeOnEscKey={false}
+  >
+    Sample text
+  </SuModal>
+</>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Transition
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Transition on modal opening can be disabled by setting suModalTransition prop to false.
 
-## Learn More
+```jsx
+<>
+  <SuModal isOpen={isOpen} setIsOpen={setIsOpen} suModalTransition={false}>
+    Sample text
+  </SuModal>
+</>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Content
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Modal content is passed through the Children prop.
+Therefore, it can be plain text, html or React components.
 
-### Code Splitting
+```jsx
+<>
+  <SuModal isOpen={isOpen} setIsOpen={setIsOpen}>
+    <MyComponent>
+      Et Voilà !<button onClick={() => setIsOpen(false)}>Close modal</button>
+    </MyComponent>
+  </SuModal>
+</>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Style Options
 
-### Analyzing the Bundle Size
+Modal can be styled using any React inline style through the styleOptions prop and the following object keys :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- background
+- container
+- content
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+<>
+  <SuModal
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
+    styleOptions={{
+      background: { background: "red" },
+      container: { border: "none" },
+      content: { width: "200px", height: "100px" },
+    }}
+  >
+    Sample text
+  </SuModal>
+</>
+```
