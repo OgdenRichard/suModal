@@ -1,6 +1,6 @@
 {
-  "name": "sumodaltryout",
-  "version": "1.0.13",
+  "name": "sumodal",
+  "version": "1.0.5",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
