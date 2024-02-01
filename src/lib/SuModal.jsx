@@ -3,6 +3,20 @@ import { useSuModalTransition } from "./useSuModalTransition";
 import { useCloseOnEscKey } from "./useCloseOnEscKey";
 import "./style/style.css";
 
+/**
+ * SuModal main component
+ * Renders a modal accordingly to specified parameters
+ * @param {string|ReactNode|arrayOf[ReactNode]} children
+ * @param {boolean} isOpen
+ * @param {Function} setIsOpen
+ * @param {boolean} suModalTransition
+ * @param {boolean} closeButton
+ * @param {boolean} closeOnClickOut
+ * @param {boolean} closeOnEscKey
+ * @param {boolean} styleOptions
+ * @returns {ReactNode}
+ */
+
 export const SuModal = ({
   children,
   isOpen,
