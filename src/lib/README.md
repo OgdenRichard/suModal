@@ -4,6 +4,8 @@ _A simple and reusable react modal component._
 
 ## Install
 
+> **This project uses prop-types 15.8.1 as a peer dependency**
+
 ```
 npm install sumodal
 ```
@@ -13,9 +15,6 @@ or
 ```
 yarn add sumodal
 ```
-
->  **This project uses prop-types as a peer dependency**
-
 
 ## Usage
 
